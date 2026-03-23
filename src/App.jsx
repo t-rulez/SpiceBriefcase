@@ -444,7 +444,7 @@ export default function SpiceApp() {
     pantrySub: lang === "no" ? "Krydder du har hjemme" : "Spices you have at home",
     total: lang === "no" ? "totalt" : "total",
     spices: lang === "no" ? "krydder" : "spices",
-    used: lang === "no" ? "Brukt", : "Used",
+    used: lang === "no" ? "Brukt" : "Used",
     avgScore: lang === "no" ? "Snittkarakter" : "Avg score",
     topOrigin: lang === "no" ? "Toppland" : "Top origin",
   };
