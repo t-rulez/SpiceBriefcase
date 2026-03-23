@@ -63,8 +63,8 @@ const HeatBadge = ({ heat }) => {
   );
 };
 
-const labelStyle = { fontSize: 11, color: "#6b5a2a", display: "block", marginBottom: 7, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em" };
-const inputStyle = { width: "100%", padding: "12px 14px", border: "1.5px solid #e8d8a0", borderRadius: 10, fontSize: 15, color: "#3a2a0a", background: "#fdfaf0", boxSizing: "border-box", outline: "none" };
+const labelStyle = { fontSize: 11, color: "#4e5a28", display: "block", marginBottom: 7, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em" };
+const inputStyle = { width: "100%", padding: "12px 14px", border: "1.5px solid #e8d8a0", borderRadius: 10, fontSize: 15, color: "#2d3a12", background: "#f4f7eb", boxSizing: "border-box", outline: "none" };
 
 function StarRating({ value, onChange, max = 10 }) {
   const [hovered, setHovered] = useState(null);
@@ -75,11 +75,11 @@ function StarRating({ value, onChange, max = 10 }) {
         <button key={i} onClick={() => onChange && onChange(i + 1)}
           onMouseEnter={() => onChange && setHovered(i + 1)}
           onMouseLeave={() => onChange && setHovered(null)}
-          style={{ background: "none", border: "none", cursor: onChange ? "pointer" : "default", color: i < display ? "#c8920a" : "#d4c580", padding: "2px", lineHeight: 1, minWidth: 22, minHeight: 22, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          style={{ background: "none", border: "none", cursor: onChange ? "pointer" : "default", color: i < display ? "#8a9a2a" : "#c0d070", padding: "2px", lineHeight: 1, minWidth: 22, minHeight: 22, display: "flex", alignItems: "center", justifyContent: "center" }}>
           {IcoStar(i < display)}
         </button>
       ))}
-      {value > 0 && <span style={{ marginLeft: 4, fontSize: 13, color: "#7a6020", fontWeight: 700 }}>{value}/10</span>}
+      {value > 0 && <span style={{ marginLeft: 4, fontSize: 13, color: "#5a6e2a", fontWeight: 700 }}>{value}/10</span>}
     </div>
   );
 }
@@ -102,17 +102,17 @@ function AuthScreen({ onLogin }) {
   };
 
   return (
-    <div style={{ minHeight: "100vh", background: "linear-gradient(135deg, #4a3000 0%, #7a5500 100%)", display: "flex", alignItems: "center", justifyContent: "center", padding: 20, fontFamily: "'Georgia','Times New Roman',serif" }}>
+    <div style={{ minHeight: "100vh", background: "linear-gradient(135deg, #3b4a1e 0%, #526929 100%)", display: "flex", alignItems: "center", justifyContent: "center", padding: 20, fontFamily: "'Georgia','Times New Roman',serif" }}>
       <div style={{ background: "#fff", borderRadius: 20, padding: "36px 32px", width: "100%", maxWidth: 400, boxShadow: "0 20px 60px rgba(0,0,0,0.4)" }}>
         <div style={{ textAlign: "center", marginBottom: 28 }}>
           <div style={{ fontSize: 44, marginBottom: 8 }}>🌿</div>
-          <div style={{ fontSize: 22, fontWeight: 800, color: "#3a2a0a" }}>SpiceBriefcase</div>
-          <div style={{ fontSize: 12, color: "#9a8040", letterSpacing: "0.1em", textTransform: "uppercase", marginTop: 4 }}>Din personlige krydderlogg</div>
+          <div style={{ fontSize: 22, fontWeight: 800, color: "#2d3a12" }}>SpiceBriefcase</div>
+          <div style={{ fontSize: 12, color: "#727d3e", letterSpacing: "0.1em", textTransform: "uppercase", marginTop: 4 }}>Din personlige krydderlogg</div>
         </div>
-        <div style={{ display: "flex", background: "#fdfaf0", borderRadius: 12, padding: 4, marginBottom: 24 }}>
+        <div style={{ display: "flex", background: "#f4f7eb", borderRadius: 12, padding: 4, marginBottom: 24 }}>
           {[["login", "Logg inn"], ["register", "Registrer"]].map(([m, lbl]) => (
             <button key={m} onClick={() => { setMode(m); setError(""); }}
-              style={{ flex: 1, padding: "9px", border: "none", borderRadius: 9, background: mode === m ? "#4a3000" : "transparent", color: mode === m ? "#fdfaf0" : "#9a8040", fontWeight: 700, fontSize: 13, cursor: "pointer", fontFamily: "inherit" }}>
+              style={{ flex: 1, padding: "9px", border: "none", borderRadius: 9, background: mode === m ? "#3b4a1e" : "transparent", color: mode === m ? "#f4f7eb" : "#727d3e", fontWeight: 700, fontSize: 13, cursor: "pointer", fontFamily: "inherit" }}>
               {lbl}
             </button>
           ))}
@@ -124,7 +124,7 @@ function AuthScreen({ onLogin }) {
             <input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="••••••••" style={inputStyle} onKeyDown={e => e.key === "Enter" && handle()} /></div>
           {error && <div style={{ background: "#fbe9e7", color: "#b71c1c", padding: "10px 14px", borderRadius: 8, fontSize: 13, fontWeight: 600 }}>{error}</div>}
           <button onClick={handle} disabled={loading}
-            style={{ background: "#4a3000", color: "#fdfaf0", border: "none", borderRadius: 12, padding: "14px", fontSize: 15, fontWeight: 700, cursor: loading ? "wait" : "pointer", marginTop: 4, opacity: loading ? 0.7 : 1, fontFamily: "inherit" }}>
+            style={{ background: "#3b4a1e", color: "#f4f7eb", border: "none", borderRadius: 12, padding: "14px", fontSize: 15, fontWeight: 700, cursor: loading ? "wait" : "pointer", marginTop: 4, opacity: loading ? 0.7 : 1, fontFamily: "inherit" }}>
             {loading ? "Vennligst vent..." : mode === "login" ? "Logg inn" : "Opprett konto"}
           </button>
         </div>
@@ -139,7 +139,7 @@ function BottomSheet({ onClose, children }) {
     <div style={{ position: "fixed", inset: 0, background: "rgba(20,10,0,0.65)", zIndex: 1000, display: "flex", alignItems: "flex-end" }} onClick={onClose}>
       <div style={{ background: "#fff", borderRadius: "20px 20px 0 0", width: "100%", maxHeight: "92vh", overflow: "auto", paddingBottom: 32 }} onClick={e => e.stopPropagation()}>
         <div style={{ display: "flex", justifyContent: "center", padding: "12px 0 6px" }}>
-          <div style={{ width: 36, height: 4, background: "#e0d080", borderRadius: 4 }} />
+          <div style={{ width: 36, height: 4, background: "#c8d870", borderRadius: 4 }} />
         </div>
         {children}
       </div>
@@ -172,37 +172,37 @@ function SpiceCard({ spice, onSelect, onAddNote, onAddToPantry, isDesktop, lang 
       <div onClick={() => onSelect(spice)} style={{ padding: isDesktop ? "16px 18px 12px" : "15px 15px 11px", cursor: "pointer", WebkitTapHighlightColor: "transparent" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8 }}>
           <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ fontSize: 10, color: "#9a8040", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700 }}>{spice.category}</div>
-            <div style={{ fontSize: isDesktop ? 17 : 16, fontWeight: 700, color: "#3a2a0a", lineHeight: 1.2, marginTop: 1 }}>{spice.name}</div>
-            {spice.also_known_as && <div style={{ fontSize: 11, color: "#9a8040", marginTop: 1, fontStyle: "italic" }}>{spice.also_known_as}</div>}
+            <div style={{ fontSize: 10, color: "#727d3e", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700 }}>{spice.category}</div>
+            <div style={{ fontSize: isDesktop ? 17 : 16, fontWeight: 700, color: "#2d3a12", lineHeight: 1.2, marginTop: 1 }}>{spice.name}</div>
+            {spice.also_known_as && <div style={{ fontSize: 11, color: "#727d3e", marginTop: 1, fontStyle: "italic" }}>{spice.also_known_as}</div>}
           </div>
           <div style={{ textAlign: "right", flexShrink: 0 }}>
-            <div style={{ fontSize: 9, color: "#9a8040", textTransform: "uppercase" }}>{lang === "no" ? "Opprinnelse" : "Origin"}</div>
-            <div style={{ fontSize: 12, fontWeight: 700, color: "#c8920a", lineHeight: 1.2, maxWidth: 90, textAlign: "right" }}>{spice.origin}</div>
+            <div style={{ fontSize: 9, color: "#727d3e", textTransform: "uppercase" }}>{lang === "no" ? "Opprinnelse" : "Origin"}</div>
+            <div style={{ fontSize: 12, fontWeight: 700, color: "#8a9a2a", lineHeight: 1.2, maxWidth: 90, textAlign: "right" }}>{spice.origin}</div>
           </div>
         </div>
         <div style={{ display: "flex", gap: 6, marginTop: 9, flexWrap: "wrap" }}>
           <HeatBadge heat={spice.heat} />
-          <span style={{ background: "#fdf5d0", color: "#7a5500", padding: "3px 10px", borderRadius: 20, fontSize: 11, fontWeight: 500 }}>{spice.flavor_profile}</span>
+          <span style={{ background: "#eef3d0", color: "#526929", padding: "3px 10px", borderRadius: 20, fontSize: 11, fontWeight: 500 }}>{spice.flavor_profile}</span>
         </div>
-        <div style={{ fontSize: 12, color: "#7a6a3a", marginTop: 8, lineHeight: 1.5, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
+        <div style={{ fontSize: 12, color: "#606b3a", marginTop: 8, lineHeight: 1.5, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
           {desc}
         </div>
         {spice.uses && (
           <div style={{ display: "flex", gap: 4, marginTop: 8, flexWrap: "wrap" }}>
             {spice.uses.slice(0, 3).map(u => (
-              <span key={u} style={{ fontSize: 10, background: "#fdfaf0", color: "#7a6020", border: "1px solid #e8d8a0", padding: "2px 7px", borderRadius: 10 }}>{u}</span>
+              <span key={u} style={{ fontSize: 10, background: "#f4f7eb", color: "#5a6e2a", border: "1px solid #e8d8a0", padding: "2px 7px", borderRadius: 10 }}>{u}</span>
             ))}
           </div>
         )}
       </div>
       <div style={{ display: "flex", borderTop: "1px solid #f5e8a0" }}>
         <button onClick={() => onAddNote(spice)}
-          style={{ flex: 1, background: "#4a3000", color: "#fdfaf0", border: "none", padding: "12px 8px", fontSize: 12, fontWeight: 700, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 5 }}>
+          style={{ flex: 1, background: "#3b4a1e", color: "#f4f7eb", border: "none", padding: "12px 8px", fontSize: 12, fontWeight: 700, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 5 }}>
           <IcoNotes size={14} /> {lang === "no" ? "Notat" : "Note"}
         </button>
         <button onClick={() => onAddToPantry(spice)}
-          style={{ flex: 1, background: "#c8920a", color: "#3a2a0a", border: "none", borderLeft: "1px solid rgba(74,48,0,0.15)", padding: "12px 8px", fontSize: 12, fontWeight: 700, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 5 }}>
+          style={{ flex: 1, background: "#8a9a2a", color: "#2d3a12", border: "none", borderLeft: "1px solid rgba(74,48,0,0.15)", padding: "12px 8px", fontSize: 12, fontWeight: 700, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 5 }}>
           🫙 {lang === "no" ? "Krydderhylle" : "Pantry"}
         </button>
       </div>
@@ -221,46 +221,46 @@ function SpiceDetail({ spice, onClose, onAddNote, onAddToPantry, isMobile, lang 
     <>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 10 }}>
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontSize: 11, color: "#9a8040", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700 }}>{spice.category}</div>
-          <h2 style={{ margin: "3px 0 0", fontSize: 22, fontWeight: 800, color: "#3a2a0a", lineHeight: 1.15 }}>{spice.name}</h2>
-          {spice.also_known_as && <div style={{ fontSize: 12, color: "#9a8040", fontStyle: "italic", marginTop: 2 }}>{spice.also_known_as}</div>}
+          <div style={{ fontSize: 11, color: "#727d3e", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700 }}>{spice.category}</div>
+          <h2 style={{ margin: "3px 0 0", fontSize: 22, fontWeight: 800, color: "#2d3a12", lineHeight: 1.15 }}>{spice.name}</h2>
+          {spice.also_known_as && <div style={{ fontSize: 12, color: "#727d3e", fontStyle: "italic", marginTop: 2 }}>{spice.also_known_as}</div>}
         </div>
-        <button onClick={onClose} style={{ background: "#fdfaf0", border: "none", borderRadius: 10, width: 34, height: 34, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", color: "#3a2a0a", flexShrink: 0, marginLeft: 10 }}><IcoClose /></button>
+        <button onClick={onClose} style={{ background: "#f4f7eb", border: "none", borderRadius: 10, width: 34, height: 34, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", color: "#2d3a12", flexShrink: 0, marginLeft: 10 }}><IcoClose /></button>
       </div>
       <div style={{ display: "flex", gap: 7, marginBottom: 12, flexWrap: "wrap" }}>
         <HeatBadge heat={spice.heat} />
-        <span style={{ background: "#fdf5d0", color: "#7a5500", padding: "3px 12px", borderRadius: 20, fontSize: 12, fontWeight: 600 }}>{spice.flavor_profile}</span>
+        <span style={{ background: "#eef3d0", color: "#526929", padding: "3px 12px", borderRadius: 20, fontSize: 12, fontWeight: 600 }}>{spice.flavor_profile}</span>
       </div>
-      <p style={{ color: "#5a4a1a", lineHeight: 1.65, fontSize: 14, margin: "0 0 14px" }}>{desc}</p>
+      <p style={{ color: "#434f20", lineHeight: 1.65, fontSize: 14, margin: "0 0 14px" }}>{desc}</p>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 14 }}>
         {[[t.origin, spice.origin], [t.heat, spice.heat], [t.flavor, spice.flavor_profile], ["Botanisk", spice.botanical || "—"]].map(([label, val]) => (
-          <div key={label} style={{ background: "#fdfaf0", borderRadius: 8, padding: "9px 12px" }}>
-            <div style={{ fontSize: 10, color: "#9a8040", textTransform: "uppercase", letterSpacing: "0.06em" }}>{label}</div>
-            <div style={{ fontWeight: 700, color: "#3a2a0a", fontSize: 13, marginTop: 1 }}>{val}</div>
+          <div key={label} style={{ background: "#f4f7eb", borderRadius: 8, padding: "9px 12px" }}>
+            <div style={{ fontSize: 10, color: "#727d3e", textTransform: "uppercase", letterSpacing: "0.06em" }}>{label}</div>
+            <div style={{ fontWeight: 700, color: "#2d3a12", fontSize: 13, marginTop: 1 }}>{val}</div>
           </div>
         ))}
       </div>
       {spice.uses && spice.uses.length > 0 && (
         <div style={{ marginBottom: 14 }}>
-          <div style={{ fontSize: 11, color: "#9a8040", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>{t.uses}</div>
+          <div style={{ fontSize: 11, color: "#727d3e", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>{t.uses}</div>
           <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-            {spice.uses.map(u => <span key={u} style={{ background: "#fdfaf0", color: "#7a5500", border: "1px solid #e8d8a0", padding: "5px 12px", borderRadius: 20, fontSize: 12, fontWeight: 500 }}>{u}</span>)}
+            {spice.uses.map(u => <span key={u} style={{ background: "#f4f7eb", color: "#526929", border: "1px solid #e8d8a0", padding: "5px 12px", borderRadius: 20, fontSize: 12, fontWeight: 500 }}>{u}</span>)}
           </div>
         </div>
       )}
       {spice.pairings && spice.pairings.length > 0 && (
         <div style={{ marginBottom: 18 }}>
-          <div style={{ fontSize: 11, color: "#9a8040", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>{t.pairings}</div>
+          <div style={{ fontSize: 11, color: "#727d3e", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>{t.pairings}</div>
           <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-            {spice.pairings.map(p => <span key={p} style={{ background: "#fdf5d0", color: "#7a5500", border: "1px solid #e8d090", padding: "5px 12px", borderRadius: 20, fontSize: 12, fontWeight: 500 }}>{p}</span>)}
+            {spice.pairings.map(p => <span key={p} style={{ background: "#eef3d0", color: "#526929", border: "1px solid #e8d090", padding: "5px 12px", borderRadius: 20, fontSize: 12, fontWeight: 500 }}>{p}</span>)}
           </div>
         </div>
       )}
       <div style={{ display: "flex", gap: 10 }}>
         <button onClick={() => { onAddToPantry(spice); onClose(); }}
-          style={{ flex: 1, background: "#c8920a", color: "#3a2a0a", border: "none", borderRadius: 12, padding: "14px 8px", fontSize: 14, fontWeight: 700, cursor: "pointer" }}>{t.addPantry}</button>
+          style={{ flex: 1, background: "#8a9a2a", color: "#2d3a12", border: "none", borderRadius: 12, padding: "14px 8px", fontSize: 14, fontWeight: 700, cursor: "pointer" }}>{t.addPantry}</button>
         <button onClick={() => { onAddNote(spice); onClose(); }}
-          style={{ flex: 1, background: "#4a3000", color: "#fdfaf0", border: "none", borderRadius: 12, padding: "14px 8px", fontSize: 14, fontWeight: 700, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}>
+          style={{ flex: 1, background: "#3b4a1e", color: "#f4f7eb", border: "none", borderRadius: 12, padding: "14px 8px", fontSize: 14, fontWeight: 700, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}>
           <IcoNotes size={16} /> {t.addNote}
         </button>
       </div>
@@ -285,8 +285,8 @@ function AddNoteSheet({ spice, onClose, onSave, isMobile, existing }) {
   const content = (
     <>
       <div style={{ marginBottom: 18 }}>
-        <div style={{ fontSize: 11, color: "#9a8040", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700 }}>{t.title}</div>
-        <h3 style={{ margin: "3px 0 0", fontSize: 20, fontWeight: 800, color: "#3a2a0a", lineHeight: 1.2 }}>{spice.name}</h3>
+        <div style={{ fontSize: 11, color: "#727d3e", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700 }}>{t.title}</div>
+        <h3 style={{ margin: "3px 0 0", fontSize: 20, fontWeight: 800, color: "#2d3a12", lineHeight: 1.2 }}>{spice.name}</h3>
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
         <div><label style={labelStyle}>{t.date}</label><input type="date" value={form.date} onChange={e => set("date", e.target.value)} style={inputStyle} /></div>
@@ -297,9 +297,9 @@ function AddNoteSheet({ spice, onClose, onSave, isMobile, existing }) {
         <div><label style={labelStyle}>{t.dish}</label><input value={form.dish} onChange={e => set("dish", e.target.value)} placeholder={t.dishPlaceholder} style={inputStyle} /></div>
       </div>
       <div style={{ display: "flex", gap: 10, marginTop: 20 }}>
-        <button onClick={onClose} style={{ flex: 1, background: "#fdfaf0", color: "#3a2a0a", border: "none", borderRadius: 12, padding: "14px", fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>{t.cancel}</button>
+        <button onClick={onClose} style={{ flex: 1, background: "#f4f7eb", color: "#2d3a12", border: "none", borderRadius: 12, padding: "14px", fontSize: 14, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>{t.cancel}</button>
         <button onClick={() => { onSave({ spice, ...form, id: existing?.id || Date.now() }); onClose(); }}
-          style={{ flex: 2, background: "#4a3000", color: "#fdfaf0", border: "none", borderRadius: 12, padding: "14px", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>{t.save}</button>
+          style={{ flex: 2, background: "#3b4a1e", color: "#f4f7eb", border: "none", borderRadius: 12, padding: "14px", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>{t.save}</button>
       </div>
     </>
   );
@@ -312,24 +312,24 @@ function NoteCard({ entry, onDelete, onEdit }) {
     <div style={{ background: "#fff", borderRadius: 14, border: "1px solid #e8d8a0", padding: "15px", boxShadow: "0 1px 4px rgba(74,48,0,0.05)" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontSize: 10, color: "#9a8040", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>{entry.spice.category}</div>
-          <div style={{ fontSize: 16, fontWeight: 700, color: "#3a2a0a", lineHeight: 1.2 }}>{entry.spice.name}</div>
-          <div style={{ fontSize: 11, color: "#9a8040", marginTop: 1 }}>{entry.date}</div>
+          <div style={{ fontSize: 10, color: "#727d3e", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>{entry.spice.category}</div>
+          <div style={{ fontSize: 16, fontWeight: 700, color: "#2d3a12", lineHeight: 1.2 }}>{entry.spice.name}</div>
+          <div style={{ fontSize: 11, color: "#727d3e", marginTop: 1 }}>{entry.date}</div>
         </div>
         <div style={{ display: "flex", gap: 6, marginLeft: 8 }}>
-          <button onClick={() => onEdit(entry)} style={{ background: "#fdfaf0", border: "none", borderRadius: 8, width: 34, height: 34, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", color: "#7a5500" }}><IcoEdit /></button>
+          <button onClick={() => onEdit(entry)} style={{ background: "#f4f7eb", border: "none", borderRadius: 8, width: 34, height: 34, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", color: "#526929" }}><IcoEdit /></button>
           <button onClick={() => onDelete(entry.id)} style={{ background: "#fbe9e7", border: "none", borderRadius: 8, width: 34, height: 34, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", color: "#b71c1c" }}><IcoTrash /></button>
         </div>
       </div>
       <div style={{ marginTop: 10 }}><StarRating value={entry.myScore} max={10} /></div>
       {entry.notes && (
-        <div style={{ marginTop: 10, background: "#fdfaf0", borderRadius: 8, padding: "10px 12px", fontSize: 13, color: "#5a4a1a", lineHeight: 1.6, borderLeft: "3px solid #c8920a" }}>
+        <div style={{ marginTop: 10, background: "#f4f7eb", borderRadius: 8, padding: "10px 12px", fontSize: 13, color: "#434f20", lineHeight: 1.6, borderLeft: "3px solid #c8920a" }}>
           {entry.notes}
         </div>
       )}
       {entry.dish && (
         <div style={{ marginTop: 8 }}>
-          <span style={{ fontSize: 11, background: "#fdf5d0", color: "#7a5500", padding: "3px 10px", borderRadius: 20 }}>🍳 {entry.dish}</span>
+          <span style={{ fontSize: 11, background: "#eef3d0", color: "#526929", padding: "3px 10px", borderRadius: 20 }}>🍳 {entry.dish}</span>
         </div>
       )}
     </div>
@@ -349,15 +349,15 @@ function FilterPanel({ isMobile, open, onClose, filterHeat, setFilterHeat, filte
   const content = (
     <>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18 }}>
-        <span style={{ fontSize: 17, fontWeight: 800, color: "#3a2a0a" }}>{t.title}</span>
-        <button onClick={reset} style={{ background: "none", border: "none", color: "#c8920a", fontWeight: 700, fontSize: 14, cursor: "pointer" }}>{t.reset}</button>
+        <span style={{ fontSize: 17, fontWeight: 800, color: "#2d3a12" }}>{t.title}</span>
+        <button onClick={reset} style={{ background: "none", border: "none", color: "#8a9a2a", fontWeight: 700, fontSize: 14, cursor: "pointer" }}>{t.reset}</button>
       </div>
       <div style={{ marginBottom: 20 }}>
         <div style={labelStyle}>{t.heat}</div>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
           {["", ...heats].map(h => (
             <button key={h || "__all__"} onClick={() => setFilterHeat(h)}
-              style={{ padding: "8px 14px", borderRadius: 20, border: `1.5px solid ${filterHeat === h ? "#4a3000" : "#e8d8a0"}`, background: filterHeat === h ? "#4a3000" : "#fff", color: filterHeat === h ? "#fdfaf0" : "#5a4a1a", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>
+              style={{ padding: "8px 14px", borderRadius: 20, border: `1.5px solid ${filterHeat === h ? "#3b4a1e" : "#d4e0a0"}`, background: filterHeat === h ? "#3b4a1e" : "#fff", color: filterHeat === h ? "#f4f7eb" : "#434f20", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>
               {h || t.allHeat}
             </button>
           ))}
@@ -368,7 +368,7 @@ function FilterPanel({ isMobile, open, onClose, filterHeat, setFilterHeat, filte
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
           {["", ...categories].map(c => (
             <button key={c || "__all__"} onClick={() => setFilterCategory(c)}
-              style={{ padding: "8px 14px", borderRadius: 20, border: `1.5px solid ${filterCategory === c ? "#4a3000" : "#e8d8a0"}`, background: filterCategory === c ? "#4a3000" : "#fff", color: filterCategory === c ? "#fdfaf0" : "#5a4a1a", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>
+              style={{ padding: "8px 14px", borderRadius: 20, border: `1.5px solid ${filterCategory === c ? "#3b4a1e" : "#d4e0a0"}`, background: filterCategory === c ? "#3b4a1e" : "#fff", color: filterCategory === c ? "#f4f7eb" : "#434f20", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>
               {c || t.allCat}
             </button>
           ))}
@@ -377,22 +377,22 @@ function FilterPanel({ isMobile, open, onClose, filterHeat, setFilterHeat, filte
       <div style={{ marginBottom: 20 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
           <div style={labelStyle}>{t.origin}</div>
-          {filterOrigin && <button onClick={() => setFilterOrigin("")} style={{ background: "none", border: "none", color: "#c8920a", fontSize: 12, fontWeight: 700, cursor: "pointer" }}>{filterOrigin} ×</button>}
+          {filterOrigin && <button onClick={() => setFilterOrigin("")} style={{ background: "none", border: "none", color: "#8a9a2a", fontSize: 12, fontWeight: 700, cursor: "pointer" }}>{filterOrigin} ×</button>}
         </div>
         <div style={{ position: "relative", marginBottom: 8 }}>
-          <span style={{ position: "absolute", left: 10, top: "50%", transform: "translateY(-50%)", color: "#9a8040", pointerEvents: "none" }}><IcoSearch /></span>
+          <span style={{ position: "absolute", left: 10, top: "50%", transform: "translateY(-50%)", color: "#727d3e", pointerEvents: "none" }}><IcoSearch /></span>
           <input value={originSearch} onChange={e => setOriginSearch(e.target.value)} placeholder={t.searchOrigin} style={{ ...inputStyle, padding: "9px 12px 9px 32px", fontSize: 13 }} />
         </div>
         <div style={{ maxHeight: 180, overflowY: "auto", border: "1.5px solid #e8d8a0", borderRadius: 10, background: "#fff" }}>
           {["", ...origins].map((o, i) => (
             <button key={o || "__all__"} onClick={() => setFilterOrigin(o)}
-              style={{ width: "100%", padding: "9px 14px", background: filterOrigin === o ? "#4a3000" : "transparent", color: filterOrigin === o ? "#fdfaf0" : "#5a4a1a", border: "none", textAlign: "left", fontSize: 13, fontWeight: filterOrigin === o ? 700 : 500, cursor: "pointer", borderBottom: i < origins.length ? "1px solid #f5e8a0" : "none", fontFamily: "inherit" }}>
+              style={{ width: "100%", padding: "9px 14px", background: filterOrigin === o ? "#3b4a1e" : "transparent", color: filterOrigin === o ? "#f4f7eb" : "#434f20", border: "none", textAlign: "left", fontSize: 13, fontWeight: filterOrigin === o ? 700 : 500, cursor: "pointer", borderBottom: i < origins.length ? "1px solid #f5e8a0" : "none", fontFamily: "inherit" }}>
               {o || t.allOrigin}
             </button>
           ))}
         </div>
       </div>
-      <button onClick={onClose} style={{ width: "100%", background: "#4a3000", color: "#fdfaf0", border: "none", borderRadius: 12, padding: "14px", fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>{t.show}</button>
+      <button onClick={onClose} style={{ width: "100%", background: "#3b4a1e", color: "#f4f7eb", border: "none", borderRadius: 12, padding: "14px", fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>{t.show}</button>
     </>
   );
   if (!isMobile) return (
@@ -544,7 +544,7 @@ export default function SpiceApp() {
   ];
 
   if (loadingUser || spicesLoading) return (
-    <div style={{ minHeight: "100vh", background: "linear-gradient(135deg, #4a3000 0%, #7a5500 100%)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Georgia,serif", color: "#c8920a", fontSize: 18 }}>
+    <div style={{ minHeight: "100vh", background: "linear-gradient(135deg, #3b4a1e 0%, #526929 100%)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "Georgia,serif", color: "#8a9a2a", fontSize: 18 }}>
       🌿 Laster...
     </div>
   );
@@ -553,14 +553,14 @@ export default function SpiceApp() {
 
   // ── DESKTOP ──
   if (isDesktop) return (
-    <div style={{ minHeight: "100vh", background: "#fdfaf0", fontFamily: "'Georgia','Times New Roman',serif" }}>
-      <div style={{ background: "linear-gradient(90deg, #4a3000 0%, #6a4800 100%)", color: "#fdfaf0", padding: "0 32px", position: "sticky", top: 0, zIndex: 50, boxShadow: "0 2px 12px rgba(0,0,0,0.3)" }}>
+    <div style={{ minHeight: "100vh", background: "#f4f7eb", fontFamily: "'Georgia','Times New Roman',serif" }}>
+      <div style={{ background: "linear-gradient(90deg, #3b4a1e 0%, #4a5e25 100%)", color: "#f4f7eb", padding: "0 32px", position: "sticky", top: 0, zIndex: 50, boxShadow: "0 2px 12px rgba(0,0,0,0.3)" }}>
         <div style={{ maxWidth: 1400, margin: "0 auto", display: "flex", alignItems: "center" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "14px 0", marginRight: 32 }}>
             <span style={{ fontSize: 22 }}>🌿</span>
             <div>
-              <div style={{ fontSize: 16, fontWeight: 800, lineHeight: 1 }}>SpiceBriefcase <span style={{ color: "#c8920a" }}>v1.0</span></div>
-              <div style={{ fontSize: 9, color: "#9a7040", letterSpacing: "0.12em", textTransform: "uppercase" }}>{T.appSub}</div>
+              <div style={{ fontSize: 16, fontWeight: 800, lineHeight: 1 }}>SpiceBriefcase <span style={{ color: "#8a9a2a" }}>v1.0</span></div>
+              <div style={{ fontSize: 9, color: "#6b7a3a", letterSpacing: "0.12em", textTransform: "uppercase" }}>{T.appSub}</div>
             </div>
           </div>
           <div style={{ display: "flex", flex: 1 }}>
@@ -568,19 +568,19 @@ export default function SpiceApp() {
               const active = tab === id;
               return (
                 <button key={id} onClick={() => handleTabSwitch(id)}
-                  style={{ background: "none", border: "none", color: active ? "#c8920a" : "#9a7040", cursor: "pointer", padding: "16px 20px", fontSize: 14, fontWeight: active ? 700 : 500, borderBottom: active ? "2px solid #c8920a" : "2px solid transparent", display: "flex", alignItems: "center", gap: 7, fontFamily: "inherit", position: "relative" }}>
+                  style={{ background: "none", border: "none", color: active ? "#8a9a2a" : "#6b7a3a", cursor: "pointer", padding: "16px 20px", fontSize: 14, fontWeight: active ? 700 : 500, borderBottom: active ? "2px solid #c8920a" : "2px solid transparent", display: "flex", alignItems: "center", gap: 7, fontFamily: "inherit", position: "relative" }}>
                   <Icon size={18} />{label}
-                  {badge !== null && <span style={{ background: "#c8920a", color: "#3a2a0a", borderRadius: 10, padding: "1px 6px", fontSize: 10, fontWeight: 800 }}>{badge}</span>}
+                  {badge !== null && <span style={{ background: "#8a9a2a", color: "#2d3a12", borderRadius: 10, padding: "1px 6px", fontSize: 10, fontWeight: 800 }}>{badge}</span>}
                 </button>
               );
             })}
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginLeft: "auto" }}>
-            <span style={{ fontSize: 13, color: "#9a7040", display: "flex", alignItems: "center", gap: 6 }}><IcoUser /> {user}</span>
-            <button onClick={toggleLang} style={{ background: "rgba(255,255,255,0.1)", border: "none", borderRadius: 8, padding: "7px 12px", color: "#fdfaf0", cursor: "pointer", fontSize: 12, fontWeight: 600, fontFamily: "inherit" }}>
+            <span style={{ fontSize: 13, color: "#6b7a3a", display: "flex", alignItems: "center", gap: 6 }}><IcoUser /> {user}</span>
+            <button onClick={toggleLang} style={{ background: "rgba(255,255,255,0.1)", border: "none", borderRadius: 8, padding: "7px 12px", color: "#f4f7eb", cursor: "pointer", fontSize: 12, fontWeight: 600, fontFamily: "inherit" }}>
               {lang === "no" ? "🇬🇧 EN" : "🇳🇴 NO"}
             </button>
-            <button onClick={handleLogout} style={{ background: "rgba(255,255,255,0.1)", border: "none", borderRadius: 8, padding: "7px 12px", color: "#fdfaf0", cursor: "pointer", fontSize: 12, fontWeight: 600, display: "flex", alignItems: "center", gap: 5, fontFamily: "inherit" }}><IcoLogout /> {T.logout}</button>
+            <button onClick={handleLogout} style={{ background: "rgba(255,255,255,0.1)", border: "none", borderRadius: 8, padding: "7px 12px", color: "#f4f7eb", cursor: "pointer", fontSize: 12, fontWeight: 600, display: "flex", alignItems: "center", gap: 5, fontFamily: "inherit" }}><IcoLogout /> {T.logout}</button>
           </div>
         </div>
       </div>
@@ -592,18 +592,18 @@ export default function SpiceApp() {
             <div>
               <div style={{ display: "flex", gap: 12, marginBottom: 16, alignItems: "center" }}>
                 <div style={{ flex: 1, position: "relative" }}>
-                  <span style={{ position: "absolute", left: 12, top: "50%", transform: "translateY(-50%)", color: "#9a8040", pointerEvents: "none" }}><IcoSearch /></span>
+                  <span style={{ position: "absolute", left: 12, top: "50%", transform: "translateY(-50%)", color: "#727d3e", pointerEvents: "none" }}><IcoSearch /></span>
                   <input value={search} onChange={e => setSearch(e.target.value)} placeholder={T.search} style={{ ...inputStyle, padding: "11px 14px 11px 36px", fontSize: 14 }} />
                 </div>
-                <div style={{ fontSize: 13, color: "#7a6020", whiteSpace: "nowrap" }}>
+                <div style={{ fontSize: 13, color: "#5a6e2a", whiteSpace: "nowrap" }}>
                   <strong>{filtered.length}</strong> {T.of} {spiceDB.length} {T.spices}
-                  {hasFilter && <button onClick={() => { setFilterHeat(""); setFilterCategory(""); setFilterOrigin(""); }} style={{ marginLeft: 8, background: "none", border: "none", color: "#c8920a", cursor: "pointer", fontSize: 13, fontWeight: 700 }}>{T.reset}</button>}
+                  {hasFilter && <button onClick={() => { setFilterHeat(""); setFilterCategory(""); setFilterOrigin(""); }} style={{ marginLeft: 8, background: "none", border: "none", color: "#8a9a2a", cursor: "pointer", fontSize: 13, fontWeight: 700 }}>{T.reset}</button>}
                 </div>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 14 }}>
                 {filtered.map(s => <SpiceCard key={s.id} spice={s} onSelect={setSelectedSpice} onAddNote={setAddingNote} onAddToPantry={addToPantry} isDesktop lang={lang} />)}
               </div>
-              {filtered.length === 0 && <div style={{ textAlign: "center", padding: "60px 20px", color: "#9a8040" }}><div style={{ fontSize: 40, marginBottom: 10 }}>🔍</div><div style={{ fontSize: 16, fontWeight: 600 }}>{T.noResults}</div></div>}
+              {filtered.length === 0 && <div style={{ textAlign: "center", padding: "60px 20px", color: "#727d3e" }}><div style={{ fontSize: 40, marginBottom: 10 }}>🔍</div><div style={{ fontSize: 16, fontWeight: 600 }}>{T.noResults}</div></div>}
             </div>
           </div>
         )}
@@ -615,8 +615,8 @@ export default function SpiceApp() {
                 {[[T.used, notes.length, "📝"], [T.avgScore, avgScore, "⭐"], ["Krydder", new Set(notes.map(n => n.spice.name)).size, "🌿"], [T.topOrigin, (() => { const m = {}; notes.forEach(n => m[n.spice.origin] = (m[n.spice.origin] || 0) + 1); return Object.entries(m).sort((a, b) => b[1] - a[1])[0]?.[0]?.split(" ")[0] || "–"; })(), "🌍"]].map(([label, val, emoji]) => (
                   <div key={label} style={{ background: "#fff", borderRadius: 12, border: "1px solid #e8d8a0", padding: "16px 18px", textAlign: "center" }}>
                     <div style={{ fontSize: 24 }}>{emoji}</div>
-                    <div style={{ fontSize: 26, fontWeight: 800, color: "#3a2a0a", lineHeight: 1.1 }}>{val}</div>
-                    <div style={{ fontSize: 11, color: "#9a8040", textTransform: "uppercase", letterSpacing: "0.06em", marginTop: 2 }}>{label}</div>
+                    <div style={{ fontSize: 26, fontWeight: 800, color: "#2d3a12", lineHeight: 1.1 }}>{val}</div>
+                    <div style={{ fontSize: 11, color: "#727d3e", textTransform: "uppercase", letterSpacing: "0.06em", marginTop: 2 }}>{label}</div>
                   </div>
                 ))}
               </div>
@@ -624,9 +624,9 @@ export default function SpiceApp() {
             {notes.length === 0 ? (
               <div style={{ textAlign: "center", padding: "80px 20px" }}>
                 <div style={{ fontSize: 50, marginBottom: 14 }}>📝</div>
-                <div style={{ fontSize: 20, fontWeight: 700, color: "#3a2a0a", marginBottom: 8 }}>{T.noNotes}</div>
-                <div style={{ fontSize: 14, color: "#9a8040", marginBottom: 24 }}>{T.noNotesSub}</div>
-                <button onClick={() => handleTabSwitch("database")} style={{ background: "#4a3000", color: "#fdfaf0", border: "none", borderRadius: 12, padding: "12px 28px", fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>{T.goToDb}</button>
+                <div style={{ fontSize: 20, fontWeight: 700, color: "#2d3a12", marginBottom: 8 }}>{T.noNotes}</div>
+                <div style={{ fontSize: 14, color: "#727d3e", marginBottom: 24 }}>{T.noNotesSub}</div>
+                <button onClick={() => handleTabSwitch("database")} style={{ background: "#3b4a1e", color: "#f4f7eb", border: "none", borderRadius: 12, padding: "12px 28px", fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>{T.goToDb}</button>
               </div>
             ) : (
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(380px, 1fr))", gap: 14 }}>
@@ -640,23 +640,23 @@ export default function SpiceApp() {
           <div style={{ maxWidth: 900 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
               <div>
-                <h2 style={{ margin: 0, fontSize: 22, fontWeight: 800, color: "#3a2a0a" }}>{T.myPantry}</h2>
-                <div style={{ fontSize: 13, color: "#9a8040", marginTop: 2 }}>{T.pantrySub}</div>
+                <h2 style={{ margin: 0, fontSize: 22, fontWeight: 800, color: "#2d3a12" }}>{T.myPantry}</h2>
+                <div style={{ fontSize: 13, color: "#727d3e", marginTop: 2 }}>{T.pantrySub}</div>
               </div>
-              {totalPantry > 0 && <div style={{ background: "#fff", borderRadius: 12, border: "1px solid #e8d8a0", padding: "10px 20px", textAlign: "center" }}><div style={{ fontSize: 24, fontWeight: 800, color: "#c8920a" }}>{totalPantry}</div><div style={{ fontSize: 10, color: "#9a8040", textTransform: "uppercase" }}>{T.total}</div></div>}
+              {totalPantry > 0 && <div style={{ background: "#fff", borderRadius: 12, border: "1px solid #e8d8a0", padding: "10px 20px", textAlign: "center" }}><div style={{ fontSize: 24, fontWeight: 800, color: "#8a9a2a" }}>{totalPantry}</div><div style={{ fontSize: 10, color: "#727d3e", textTransform: "uppercase" }}>{T.total}</div></div>}
             </div>
             {pantryItems.length === 0 ? (
               <div style={{ textAlign: "center", padding: "80px 20px" }}>
                 <div style={{ fontSize: 50, marginBottom: 14 }}>🫙</div>
-                <div style={{ fontSize: 20, fontWeight: 700, color: "#3a2a0a", marginBottom: 8 }}>{T.noPantry}</div>
-                <div style={{ fontSize: 14, color: "#9a8040", marginBottom: 24 }}>{T.noPantrySub}</div>
-                <button onClick={() => handleTabSwitch("database")} style={{ background: "#4a3000", color: "#fdfaf0", border: "none", borderRadius: 12, padding: "12px 28px", fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>{T.goToDb}</button>
+                <div style={{ fontSize: 20, fontWeight: 700, color: "#2d3a12", marginBottom: 8 }}>{T.noPantry}</div>
+                <div style={{ fontSize: 14, color: "#727d3e", marginBottom: 24 }}>{T.noPantrySub}</div>
+                <button onClick={() => handleTabSwitch("database")} style={{ background: "#3b4a1e", color: "#f4f7eb", border: "none", borderRadius: 12, padding: "12px 28px", fontSize: 15, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>{T.goToDb}</button>
               </div>
             ) : (
               <div style={{ background: "#fff", borderRadius: 14, border: "1px solid #e8d8a0", overflow: "hidden" }}>
                 <table style={{ width: "100%", borderCollapse: "collapse" }}>
                   <thead>
-                    <tr style={{ background: "#4a3000", color: "#fdfaf0" }}>
+                    <tr style={{ background: "#3b4a1e", color: "#f4f7eb" }}>
                       {[lang === "no" ? "Krydder" : "Spice", lang === "no" ? "Kategori" : "Category", lang === "no" ? "Styrke" : "Heat", lang === "no" ? "Opprinnelse" : "Origin", lang === "no" ? "Antall" : "Count", ""].map(h => (
                         <th key={h} style={{ padding: "12px 16px", textAlign: "left", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.08em", fontWeight: 600 }}>{h}</th>
                       ))}
@@ -664,19 +664,19 @@ export default function SpiceApp() {
                   </thead>
                   <tbody>
                     {pantryItems.map((spice, i) => (
-                      <tr key={spice.id} style={{ borderBottom: "1px solid #f5e8a0", background: i % 2 === 0 ? "#fff" : "#fdfaf0" }}>
+                      <tr key={spice.id} style={{ borderBottom: "1px solid #f5e8a0", background: i % 2 === 0 ? "#fff" : "#f4f7eb" }}>
                         <td style={{ padding: "14px 16px" }}>
-                          <div style={{ fontSize: 10, color: "#9a8040", textTransform: "uppercase", fontWeight: 600 }}>{spice.category}</div>
-                          <div style={{ fontSize: 15, fontWeight: 700, color: "#3a2a0a" }}>{spice.name}</div>
+                          <div style={{ fontSize: 10, color: "#727d3e", textTransform: "uppercase", fontWeight: 600 }}>{spice.category}</div>
+                          <div style={{ fontSize: 15, fontWeight: 700, color: "#2d3a12" }}>{spice.name}</div>
                         </td>
-                        <td style={{ padding: "14px 16px", fontSize: 13, color: "#5a4a1a" }}>{spice.category}</td>
+                        <td style={{ padding: "14px 16px", fontSize: 13, color: "#434f20" }}>{spice.category}</td>
                         <td style={{ padding: "14px 16px" }}><HeatBadge heat={spice.heat} /></td>
-                        <td style={{ padding: "14px 16px", fontSize: 13, color: "#5a4a1a" }}>{spice.origin}</td>
+                        <td style={{ padding: "14px 16px", fontSize: 13, color: "#434f20" }}>{spice.origin}</td>
                         <td style={{ padding: "14px 16px" }}>
                           <div style={{ display: "flex", alignItems: "center" }}>
-                            <button onClick={() => adjustPantry(spice.id, -1)} style={{ width: 34, height: 34, background: "#fdfaf0", border: "1.5px solid #e8d8a0", borderRadius: "8px 0 0 8px", cursor: "pointer", fontSize: 18, fontWeight: 700, color: "#3a2a0a", display: "flex", alignItems: "center", justifyContent: "center" }}>−</button>
-                            <span style={{ minWidth: 36, height: 34, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, fontWeight: 800, color: "#3a2a0a", background: "#fdfaf0", border: "1.5px solid #e8d8a0", borderLeft: "none", borderRight: "none" }}>{pantry[spice.id]}</span>
-                            <button onClick={() => adjustPantry(spice.id, 1)} style={{ width: 34, height: 34, background: "#4a3000", border: "none", borderRadius: "0 8px 8px 0", cursor: "pointer", fontSize: 18, fontWeight: 700, color: "#fdfaf0", display: "flex", alignItems: "center", justifyContent: "center" }}>+</button>
+                            <button onClick={() => adjustPantry(spice.id, -1)} style={{ width: 34, height: 34, background: "#f4f7eb", border: "1.5px solid #e8d8a0", borderRadius: "8px 0 0 8px", cursor: "pointer", fontSize: 18, fontWeight: 700, color: "#2d3a12", display: "flex", alignItems: "center", justifyContent: "center" }}>−</button>
+                            <span style={{ minWidth: 36, height: 34, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, fontWeight: 800, color: "#2d3a12", background: "#f4f7eb", border: "1.5px solid #e8d8a0", borderLeft: "none", borderRight: "none" }}>{pantry[spice.id]}</span>
+                            <button onClick={() => adjustPantry(spice.id, 1)} style={{ width: 34, height: 34, background: "#3b4a1e", border: "none", borderRadius: "0 8px 8px 0", cursor: "pointer", fontSize: 18, fontWeight: 700, color: "#f4f7eb", display: "flex", alignItems: "center", justifyContent: "center" }}>+</button>
                           </div>
                         </td>
                         <td style={{ padding: "14px 16px" }}>
@@ -699,33 +699,33 @@ export default function SpiceApp() {
 
   // ── MOBILE ──
   return (
-    <div style={{ minHeight: "100vh", background: "#fdfaf0", fontFamily: "'Georgia','Times New Roman',serif", paddingBottom: 70 }}>
-      <div style={{ background: "linear-gradient(90deg, #4a3000 0%, #6a4800 100%)", color: "#fdfaf0", padding: `${window.navigator.standalone ? "48px" : "22px"} 14px 22px`, position: "sticky", top: 0, zIndex: 50, boxShadow: "0 2px 12px rgba(0,0,0,0.3)" }}>
+    <div style={{ minHeight: "100vh", background: "#f4f7eb", fontFamily: "'Georgia','Times New Roman',serif", paddingBottom: 70 }}>
+      <div style={{ background: "linear-gradient(90deg, #3b4a1e 0%, #4a5e25 100%)", color: "#f4f7eb", padding: `${window.navigator.standalone ? "48px" : "22px"} 14px 22px`, position: "sticky", top: 0, zIndex: 50, boxShadow: "0 2px 12px rgba(0,0,0,0.3)" }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <span style={{ fontSize: 20 }}>🌿</span>
             <div>
-              <div style={{ fontSize: 15, fontWeight: 800, lineHeight: 1 }}>SpiceBriefcase <span style={{ color: "#c8920a" }}>v1.0</span></div>
-              <div style={{ fontSize: 9, color: "#9a7040", letterSpacing: "0.12em", textTransform: "uppercase" }}>{T.appSub}</div>
+              <div style={{ fontSize: 15, fontWeight: 800, lineHeight: 1 }}>SpiceBriefcase <span style={{ color: "#8a9a2a" }}>v1.0</span></div>
+              <div style={{ fontSize: 9, color: "#6b7a3a", letterSpacing: "0.12em", textTransform: "uppercase" }}>{T.appSub}</div>
             </div>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-            <span style={{ fontSize: 12, color: "#9a7040" }}>{user}</span>
-            <button onClick={toggleLang} style={{ background: "rgba(255,255,255,0.1)", border: "none", borderRadius: 7, padding: "6px 8px", color: "#fdfaf0", cursor: "pointer", fontSize: 11, fontWeight: 600, fontFamily: "inherit" }}>
+            <span style={{ fontSize: 12, color: "#6b7a3a" }}>{user}</span>
+            <button onClick={toggleLang} style={{ background: "rgba(255,255,255,0.1)", border: "none", borderRadius: 7, padding: "6px 8px", color: "#f4f7eb", cursor: "pointer", fontSize: 11, fontWeight: 600, fontFamily: "inherit" }}>
               {lang === "no" ? "🇬🇧" : "🇳🇴"}
             </button>
-            <button onClick={handleLogout} style={{ background: "rgba(255,255,255,0.1)", border: "none", borderRadius: 7, padding: "6px 10px", color: "#fdfaf0", cursor: "pointer", fontSize: 11, fontWeight: 600, display: "flex", alignItems: "center", gap: 4, fontFamily: "inherit" }}><IcoLogout /> {T.logout}</button>
+            <button onClick={handleLogout} style={{ background: "rgba(255,255,255,0.1)", border: "none", borderRadius: 7, padding: "6px 10px", color: "#f4f7eb", cursor: "pointer", fontSize: 11, fontWeight: 600, display: "flex", alignItems: "center", gap: 4, fontFamily: "inherit" }}><IcoLogout /> {T.logout}</button>
           </div>
         </div>
         {tab === "database" && (
           <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
             <div style={{ flex: 1, position: "relative" }}>
               <span style={{ position: "absolute", left: 11, top: "50%", transform: "translateY(-50%)", color: "rgba(253,250,240,0.5)", pointerEvents: "none" }}><IcoSearch /></span>
-              <input value={search} onChange={e => setSearch(e.target.value)} placeholder={T.search} style={{ width: "100%", padding: "10px 12px 10px 34px", border: "none", borderRadius: 10, fontSize: 14, background: "rgba(255,255,255,0.1)", color: "#fdfaf0", boxSizing: "border-box", outline: "none" }} />
+              <input value={search} onChange={e => setSearch(e.target.value)} placeholder={T.search} style={{ width: "100%", padding: "10px 12px 10px 34px", border: "none", borderRadius: 10, fontSize: 14, background: "rgba(255,255,255,0.1)", color: "#f4f7eb", boxSizing: "border-box", outline: "none" }} />
             </div>
-            <button onClick={() => setFilterOpen(true)} style={{ background: hasFilter ? "#c8920a" : "rgba(255,255,255,0.1)", border: "none", borderRadius: 10, minWidth: 42, cursor: "pointer", color: hasFilter ? "#3a2a0a" : "#fdfaf0", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
+            <button onClick={() => setFilterOpen(true)} style={{ background: hasFilter ? "#8a9a2a" : "rgba(255,255,255,0.1)", border: "none", borderRadius: 10, minWidth: 42, cursor: "pointer", color: hasFilter ? "#2d3a12" : "#f4f7eb", display: "flex", alignItems: "center", justifyContent: "center", position: "relative" }}>
               <IcoFilter />
-              {hasFilter && <span style={{ position: "absolute", top: 7, right: 7, width: 7, height: 7, background: "#3a2a0a", borderRadius: "50%", border: "1.5px solid #c8920a" }} />}
+              {hasFilter && <span style={{ position: "absolute", top: 7, right: 7, width: 7, height: 7, background: "#2d3a12", borderRadius: "50%", border: "1.5px solid #c8920a" }} />}
             </button>
           </div>
         )}
@@ -734,14 +734,14 @@ export default function SpiceApp() {
       <div style={{ padding: "14px 12px" }}>
         {tab === "database" && (
           <>
-            <div style={{ fontSize: 12, color: "#7a6020", marginBottom: 11, display: "flex", justifyContent: "space-between" }}>
+            <div style={{ fontSize: 12, color: "#5a6e2a", marginBottom: 11, display: "flex", justifyContent: "space-between" }}>
               <span>{T.showing} <strong>{filtered.length}</strong> {T.of} {spiceDB.length}</span>
-              {hasFilter && <button onClick={() => { setFilterHeat(""); setFilterCategory(""); setFilterOrigin(""); }} style={{ background: "none", border: "none", color: "#c8920a", cursor: "pointer", fontSize: 12, fontWeight: 700 }}>{T.reset}</button>}
+              {hasFilter && <button onClick={() => { setFilterHeat(""); setFilterCategory(""); setFilterOrigin(""); }} style={{ background: "none", border: "none", color: "#8a9a2a", cursor: "pointer", fontSize: 12, fontWeight: 700 }}>{T.reset}</button>}
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 11 }}>
               {filtered.map(s => <SpiceCard key={s.id} spice={s} onSelect={setSelectedSpice} onAddNote={setAddingNote} onAddToPantry={addToPantry} isDesktop={false} lang={lang} />)}
             </div>
-            {filtered.length === 0 && <div style={{ textAlign: "center", padding: "60px 20px", color: "#9a8040" }}><div style={{ fontSize: 40, marginBottom: 10 }}>🔍</div><div style={{ fontSize: 16, fontWeight: 600 }}>{T.noResults}</div></div>}
+            {filtered.length === 0 && <div style={{ textAlign: "center", padding: "60px 20px", color: "#727d3e" }}><div style={{ fontSize: 40, marginBottom: 10 }}>🔍</div><div style={{ fontSize: 16, fontWeight: 600 }}>{T.noResults}</div></div>}
           </>
         )}
 
@@ -752,8 +752,8 @@ export default function SpiceApp() {
                 {[[T.used, notes.length, "📝"], [T.avgScore, avgScore, "⭐"], ["Krydder", new Set(notes.map(n => n.spice.name)).size, "🌿"], [T.topOrigin, (() => { const m = {}; notes.forEach(n => m[n.spice.origin] = (m[n.spice.origin] || 0) + 1); return Object.entries(m).sort((a, b) => b[1] - a[1])[0]?.[0]?.split(" ")[0] || "–"; })(), "🌍"]].map(([label, val, emoji]) => (
                   <div key={label} style={{ background: "#fff", borderRadius: 12, border: "1px solid #e8d8a0", padding: "12px", textAlign: "center" }}>
                     <div style={{ fontSize: 20 }}>{emoji}</div>
-                    <div style={{ fontSize: 22, fontWeight: 800, color: "#3a2a0a", lineHeight: 1.1 }}>{val}</div>
-                    <div style={{ fontSize: 10, color: "#9a8040", textTransform: "uppercase", letterSpacing: "0.06em", marginTop: 2 }}>{label}</div>
+                    <div style={{ fontSize: 22, fontWeight: 800, color: "#2d3a12", lineHeight: 1.1 }}>{val}</div>
+                    <div style={{ fontSize: 10, color: "#727d3e", textTransform: "uppercase", letterSpacing: "0.06em", marginTop: 2 }}>{label}</div>
                   </div>
                 ))}
               </div>
@@ -761,9 +761,9 @@ export default function SpiceApp() {
             {notes.length === 0 ? (
               <div style={{ textAlign: "center", padding: "70px 20px" }}>
                 <div style={{ fontSize: 46, marginBottom: 12 }}>📝</div>
-                <div style={{ fontSize: 17, fontWeight: 700, color: "#3a2a0a", marginBottom: 6 }}>{T.noNotes}</div>
-                <div style={{ fontSize: 13, color: "#9a8040", marginBottom: 20 }}>{T.noNotesSub}</div>
-                <button onClick={() => handleTabSwitch("database")} style={{ background: "#4a3000", color: "#fdfaf0", border: "none", borderRadius: 12, padding: "12px 24px", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>{T.goToDb}</button>
+                <div style={{ fontSize: 17, fontWeight: 700, color: "#2d3a12", marginBottom: 6 }}>{T.noNotes}</div>
+                <div style={{ fontSize: 13, color: "#727d3e", marginBottom: 20 }}>{T.noNotesSub}</div>
+                <button onClick={() => handleTabSwitch("database")} style={{ background: "#3b4a1e", color: "#f4f7eb", border: "none", borderRadius: 12, padding: "12px 24px", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>{T.goToDb}</button>
               </div>
             ) : (
               <div style={{ display: "flex", flexDirection: "column", gap: 11 }}>
@@ -777,31 +777,31 @@ export default function SpiceApp() {
           <>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
               <div>
-                <div style={{ fontSize: 17, fontWeight: 800, color: "#3a2a0a" }}>{T.myPantry}</div>
-                <div style={{ fontSize: 12, color: "#9a8040" }}>{T.pantrySub}</div>
+                <div style={{ fontSize: 17, fontWeight: 800, color: "#2d3a12" }}>{T.myPantry}</div>
+                <div style={{ fontSize: 12, color: "#727d3e" }}>{T.pantrySub}</div>
               </div>
-              {totalPantry > 0 && <div style={{ background: "#fff", borderRadius: 10, border: "1px solid #e8d8a0", padding: "6px 14px", textAlign: "center" }}><div style={{ fontSize: 20, fontWeight: 800, color: "#c8920a" }}>{totalPantry}</div><div style={{ fontSize: 9, color: "#9a8040", textTransform: "uppercase" }}>{T.total}</div></div>}
+              {totalPantry > 0 && <div style={{ background: "#fff", borderRadius: 10, border: "1px solid #e8d8a0", padding: "6px 14px", textAlign: "center" }}><div style={{ fontSize: 20, fontWeight: 800, color: "#8a9a2a" }}>{totalPantry}</div><div style={{ fontSize: 9, color: "#727d3e", textTransform: "uppercase" }}>{T.total}</div></div>}
             </div>
             {pantryItems.length === 0 ? (
               <div style={{ textAlign: "center", padding: "70px 20px" }}>
                 <div style={{ fontSize: 46, marginBottom: 12 }}>🫙</div>
-                <div style={{ fontSize: 17, fontWeight: 700, color: "#3a2a0a", marginBottom: 6 }}>{T.noPantry}</div>
-                <div style={{ fontSize: 13, color: "#9a8040", marginBottom: 20 }}>{T.noPantrySub}</div>
-                <button onClick={() => handleTabSwitch("database")} style={{ background: "#4a3000", color: "#fdfaf0", border: "none", borderRadius: 12, padding: "12px 24px", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>{T.goToDb}</button>
+                <div style={{ fontSize: 17, fontWeight: 700, color: "#2d3a12", marginBottom: 6 }}>{T.noPantry}</div>
+                <div style={{ fontSize: 13, color: "#727d3e", marginBottom: 20 }}>{T.noPantrySub}</div>
+                <button onClick={() => handleTabSwitch("database")} style={{ background: "#3b4a1e", color: "#f4f7eb", border: "none", borderRadius: 12, padding: "12px 24px", fontSize: 14, fontWeight: 700, cursor: "pointer", fontFamily: "inherit" }}>{T.goToDb}</button>
               </div>
             ) : (
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                 {pantryItems.map(spice => (
                   <div key={spice.id} style={{ background: "#fff", borderRadius: 14, border: "1px solid #e8d8a0", padding: "13px 14px", display: "flex", alignItems: "center", gap: 10 }}>
                     <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ fontSize: 10, color: "#9a8040", fontWeight: 700, textTransform: "uppercase" }}>{spice.category}</div>
-                      <div style={{ fontSize: 15, fontWeight: 700, color: "#3a2a0a" }}>{spice.name}</div>
-                      <div style={{ fontSize: 11, color: "#9a8040", marginTop: 1 }}>{spice.origin}</div>
+                      <div style={{ fontSize: 10, color: "#727d3e", fontWeight: 700, textTransform: "uppercase" }}>{spice.category}</div>
+                      <div style={{ fontSize: 15, fontWeight: 700, color: "#2d3a12" }}>{spice.name}</div>
+                      <div style={{ fontSize: 11, color: "#727d3e", marginTop: 1 }}>{spice.origin}</div>
                     </div>
                     <div style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
-                      <button onClick={() => adjustPantry(spice.id, -1)} style={{ width: 38, height: 38, background: "#fdfaf0", border: "1.5px solid #e8d8a0", borderRadius: "9px 0 0 9px", cursor: "pointer", fontSize: 20, fontWeight: 700, color: "#3a2a0a", display: "flex", alignItems: "center", justifyContent: "center" }}>−</button>
-                      <span style={{ minWidth: 38, height: 38, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 17, fontWeight: 800, color: "#3a2a0a", background: "#fdfaf0", border: "1.5px solid #e8d8a0", borderLeft: "none", borderRight: "none" }}>{pantry[spice.id]}</span>
-                      <button onClick={() => adjustPantry(spice.id, 1)} style={{ width: 38, height: 38, background: "#4a3000", border: "none", borderRadius: "0 9px 9px 0", cursor: "pointer", fontSize: 20, fontWeight: 700, color: "#fdfaf0", display: "flex", alignItems: "center", justifyContent: "center" }}>+</button>
+                      <button onClick={() => adjustPantry(spice.id, -1)} style={{ width: 38, height: 38, background: "#f4f7eb", border: "1.5px solid #e8d8a0", borderRadius: "9px 0 0 9px", cursor: "pointer", fontSize: 20, fontWeight: 700, color: "#2d3a12", display: "flex", alignItems: "center", justifyContent: "center" }}>−</button>
+                      <span style={{ minWidth: 38, height: 38, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 17, fontWeight: 800, color: "#2d3a12", background: "#f4f7eb", border: "1.5px solid #e8d8a0", borderLeft: "none", borderRight: "none" }}>{pantry[spice.id]}</span>
+                      <button onClick={() => adjustPantry(spice.id, 1)} style={{ width: 38, height: 38, background: "#3b4a1e", border: "none", borderRadius: "0 9px 9px 0", cursor: "pointer", fontSize: 20, fontWeight: 700, color: "#f4f7eb", display: "flex", alignItems: "center", justifyContent: "center" }}>+</button>
                     </div>
                     <button onClick={() => adjustPantry(spice.id, -pantry[spice.id])} style={{ background: "#fbe9e7", border: "none", borderRadius: 8, width: 36, height: 36, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", color: "#b71c1c", flexShrink: 0 }}><IcoTrash /></button>
                   </div>
@@ -812,16 +812,16 @@ export default function SpiceApp() {
         )}
       </div>
 
-      <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, background: "#4a3000", display: "flex", borderTop: "1px solid rgba(255,255,255,0.07)", zIndex: 50, paddingBottom: "env(safe-area-inset-bottom,0px)" }}>
+      <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, background: "#3b4a1e", display: "flex", borderTop: "1px solid rgba(255,255,255,0.07)", zIndex: 50, paddingBottom: "env(safe-area-inset-bottom,0px)" }}>
         {TABS.map(({ id, Icon, label, badge }) => {
           const active = tab === id;
           return (
             <button key={id} onClick={() => handleTabSwitch(id)}
-              style={{ flex: 1, background: "none", border: "none", cursor: "pointer", padding: "10px 4px 9px", display: "flex", flexDirection: "column", alignItems: "center", gap: 3, color: active ? "#c8920a" : "#9a7040", position: "relative", WebkitTapHighlightColor: "transparent" }}>
-              {active && <span style={{ position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)", width: 28, height: 2.5, background: "#c8920a", borderRadius: "0 0 3px 3px" }} />}
+              style={{ flex: 1, background: "none", border: "none", cursor: "pointer", padding: "10px 4px 9px", display: "flex", flexDirection: "column", alignItems: "center", gap: 3, color: active ? "#8a9a2a" : "#6b7a3a", position: "relative", WebkitTapHighlightColor: "transparent" }}>
+              {active && <span style={{ position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)", width: 28, height: 2.5, background: "#8a9a2a", borderRadius: "0 0 3px 3px" }} />}
               <div style={{ position: "relative" }}>
                 <Icon size={22} />
-                {badge !== null && <span style={{ position: "absolute", top: -5, right: -7, background: "#c8920a", color: "#3a2a0a", borderRadius: 10, padding: "1px 5px", fontSize: 9, fontWeight: 800, lineHeight: 1.5 }}>{badge}</span>}
+                {badge !== null && <span style={{ position: "absolute", top: -5, right: -7, background: "#8a9a2a", color: "#2d3a12", borderRadius: 10, padding: "1px 5px", fontSize: 9, fontWeight: 800, lineHeight: 1.5 }}>{badge}</span>}
               </div>
               <span style={{ fontSize: 10, fontWeight: active ? 700 : 400 }}>{label}</span>
             </button>
