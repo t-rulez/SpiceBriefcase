@@ -12,6 +12,18 @@ const CURRENT_APP = "SpiceBriefcase";
 function AppSwitcher() {
   const [open, setOpen] = useState(false);
   const current = APPS.find(a => a.name === CURRENT_APP);
+  const isPwa = window.navigator.standalone === true
+    || window.matchMedia("(display-mode: standalone)").matches;
+
+  const navigate = (url) => {
+    setOpen(false);
+    if (isPwa) {
+      window.location.href = url;
+    } else {
+      window.open(url, "_blank");
+    }
+  };
+
   return (
     <div style={{ position: "relative" }}>
       <button onClick={() => setOpen(o => !o)}
@@ -24,10 +36,18 @@ function AppSwitcher() {
           <div onClick={() => setOpen(false)} style={{ position: "fixed", inset: 0, zIndex: 98 }} />
           <div style={{ position: "absolute", top: "calc(100% + 6px)", left: 0, background: "#fff", borderRadius: 12, boxShadow: "0 8px 32px rgba(0,0,0,0.25)", zIndex: 99, minWidth: 210, overflow: "hidden", border: "1px solid #e8d8a0" }}>
             <div style={{ padding: "8px 14px 6px", fontSize: 10, color: "#6b7a3a", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700 }}>Briefcase Apps</div>
-            {APPS.map(app => (
-              <a key={app.name} href={app.url}
-                style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 14px", textDecoration: "none", background: app.name === CURRENT_APP ? "#f4f7eb" : "#fff", borderTop: "1px solid #f0ead0" }}
-                onClick={() => setOpen(false)}>
+                        {APPS.map(app => (
+              <button key={app.name}
+                onClick={() => app.name !== CURRENT_APP && navigate(app.url)}
+                style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 14px", background: app.name === CURRENT_APP ? "#f4f7eb" : "#fff", borderTop: "1px solid #f0e8d8", width: "100%", border: "none", borderTop: "1px solid #f0e8d8", cursor: app.name === CURRENT_APP ? "default" : "pointer", fontFamily: "inherit" }}
+                onClick={() => app.name !== CURRENT_APP && navigate(app.url)}>
+                <span style={{ fontSize: 20 }}>{app.emoji}</span>
+                <div style={{ textAlign: "left" }}>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: app.name === CURRENT_APP ? "#3b4a1e" : "#2d3a12" }}>{app.name}</div>
+                  {app.name === CURRENT_APP && <div style={{ fontSize: 10, color: "#3b4a1e", fontWeight: 600 }}>● Aktiv</div>}
+                </div>
+              </button>
+            ))}>
                 <span style={{ fontSize: 20 }}>{app.emoji}</span>
                 <div>
                   <div style={{ fontSize: 13, fontWeight: 700, color: app.name === CURRENT_APP ? "#3b4a1e" : "#2d3a12" }}>{app.name}</div>
