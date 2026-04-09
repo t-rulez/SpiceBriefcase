@@ -1,5 +1,47 @@
 import { useState, useMemo, useEffect } from "react";
 
+
+// ─── APP SWITCHER ─────────────────────────────────────────────────────────────
+const APPS = [
+  { name: "WineBriefcase",  url: "https://winebriefcase.vercel.app",  emoji: "🍷" },
+  { name: "CigarBriefcase", url: "https://cigarbriefcase.vercel.app", emoji: "🚬" },
+  { name: "SpiceBriefcase", url: "https://spicebriefcase.vercel.app", emoji: "🌶️" },
+];
+const CURRENT_APP = "SpiceBriefcase";
+
+function AppSwitcher() {
+  const [open, setOpen] = useState(false);
+  const current = APPS.find(a => a.name === CURRENT_APP);
+  return (
+    <div style={{ position: "relative" }}>
+      <button onClick={() => setOpen(o => !o)}
+        style={{ display: "flex", alignItems: "center", gap: 6, background: "rgba(255,255,255,0.12)", border: "none", borderRadius: 8, padding: "6px 10px", color: "#f4f7eb", cursor: "pointer", fontSize: 13, fontWeight: 700, fontFamily: "inherit", whiteSpace: "nowrap" }}>
+        {current.emoji} {current.name}
+        <span style={{ fontSize: 9, opacity: 0.7, marginLeft: 2 }}>▼</span>
+      </button>
+      {open && (
+        <>
+          <div onClick={() => setOpen(false)} style={{ position: "fixed", inset: 0, zIndex: 98 }} />
+          <div style={{ position: "absolute", top: "calc(100% + 6px)", left: 0, background: "#fff", borderRadius: 12, boxShadow: "0 8px 32px rgba(0,0,0,0.25)", zIndex: 99, minWidth: 210, overflow: "hidden", border: "1px solid #e8d8a0" }}>
+            <div style={{ padding: "8px 14px 6px", fontSize: 10, color: "#6b7a3a", textTransform: "uppercase", letterSpacing: "0.1em", fontWeight: 700 }}>Briefcase Apps</div>
+            {APPS.map(app => (
+              <a key={app.name} href={app.url}
+                style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 14px", textDecoration: "none", background: app.name === CURRENT_APP ? "#f4f7eb" : "#fff", borderTop: "1px solid #f0ead0" }}
+                onClick={() => setOpen(false)}>
+                <span style={{ fontSize: 20 }}>{app.emoji}</span>
+                <div>
+                  <div style={{ fontSize: 13, fontWeight: 700, color: app.name === CURRENT_APP ? "#3b4a1e" : "#2d3a12" }}>{app.name}</div>
+                  {app.name === CURRENT_APP && <div style={{ fontSize: 10, color: "#8a9a2a", fontWeight: 600 }}>● Aktiv</div>}
+                </div>
+              </a>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 // ─── API HELPERS ─────────────────────────────────────────────────────────────
 const API = {
   async auth(action, username, password) {
@@ -557,11 +599,7 @@ export default function SpiceApp() {
       <div style={{ background: "linear-gradient(90deg, #3b4a1e 0%, #4a5e25 100%)", color: "#f4f7eb", padding: "0 32px", position: "sticky", top: 0, zIndex: 50, boxShadow: "0 2px 12px rgba(0,0,0,0.3)" }}>
         <div style={{ maxWidth: 1400, margin: "0 auto", display: "flex", alignItems: "center" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "14px 0", marginRight: 32 }}>
-            <span style={{ fontSize: 22 }}>🌿</span>
-            <div>
-              <div style={{ fontSize: 16, fontWeight: 800, lineHeight: 1 }}>SpiceBriefcase <span style={{ color: "#8a9a2a" }}>v1.0</span></div>
-              <div style={{ fontSize: 9, color: "#6b7a3a", letterSpacing: "0.12em", textTransform: "uppercase" }}>{T.appSub}</div>
-            </div>
+            <AppSwitcher />
           </div>
           <div style={{ display: "flex", flex: 1 }}>
             {TABS.map(({ id, Icon, label, badge }) => {
@@ -703,11 +741,7 @@ export default function SpiceApp() {
       <div style={{ background: "linear-gradient(90deg, #3b4a1e 0%, #4a5e25 100%)", color: "#f4f7eb", padding: `${window.navigator.standalone ? "48px" : "22px"} 14px 22px`, position: "sticky", top: 0, zIndex: 50, boxShadow: "0 2px 12px rgba(0,0,0,0.3)" }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <span style={{ fontSize: 20 }}>🌿</span>
-            <div>
-              <div style={{ fontSize: 15, fontWeight: 800, lineHeight: 1 }}>SpiceBriefcase <span style={{ color: "#8a9a2a" }}>v1.0</span></div>
-              <div style={{ fontSize: 9, color: "#6b7a3a", letterSpacing: "0.12em", textTransform: "uppercase" }}>{T.appSub}</div>
-            </div>
+            <AppSwitcher />
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
             <span style={{ fontSize: 12, color: "#6b7a3a" }}>{user}</span>
