@@ -447,49 +447,6 @@ function FilterPanel({ isMobile, open, onClose, filterHeat, setFilterHeat, filte
 }
 
 // ─── MAIN APP ─────────────────────────────────────────────────────────────────
-// ─── APP SWITCHER ─────────────────────────────────────────────────────────────
-const APPS = [
-  { name: "WineBriefcase",  url: "https://winebriefcase.vercel.app",  emoji: "🍷" },
-  { name: "CigarBriefcase", url: "https://cigarbriefcase.vercel.app", emoji: "🚬" },
-  { name: "SpiceBriefcase", url: "https://spicebriefcase.vercel.app", emoji: "🌶️" },
-];
-const CURRENT_APP = "SpiceBriefcase";
-
-function AppSwitcher() {
-  const [open, setOpen] = useState(false);
-  const current = APPS.find(a => a.name === CURRENT_APP);
-
-  return (
-    <div style={{ position:"relative" }}>
-      <button onClick={() => setOpen(o => !o)}
-        style={{ display:"flex", alignItems:"center", gap:6, background:"rgba(255,255,255,0.12)", border:"none", borderRadius:8, padding:"6px 10px", color:"#fff", cursor:"pointer", fontSize:13, fontWeight:700, fontFamily:"inherit", whiteSpace:"nowrap" }}>
-        {current.emoji} {current.name}
-        <span style={{ fontSize:9, opacity:0.7, marginLeft:2 }}>▼</span>
-      </button>
-      {open && (
-        <>
-          {/* Backdrop */}
-          <div onClick={() => setOpen(false)} style={{ position:"fixed", inset:0, zIndex:98 }} />
-          {/* Dropdown */}
-          <div style={{ position:"absolute", top:"calc(100% + 6px)", left:0, background:"#fff", borderRadius:12, boxShadow:"0 8px 32px rgba(0,0,0,0.25)", zIndex:99, minWidth:200, overflow:"hidden", border:`1px solid ${C.border}` }}>
-            <div style={{ padding:"8px 14px 6px", fontSize:10, color:C.textSoft, textTransform:"uppercase", letterSpacing:"0.1em", fontWeight:700 }}>Briefcase Apps</div>
-            {APPS.map(app => (
-              <a key={app.name} href={app.url}
-                style={{ display:"flex", alignItems:"center", gap:10, padding:"10px 14px", textDecoration:"none", background: app.name===CURRENT_APP ? C.bg : "#fff", borderTop:`1px solid ${C.borderLight}` }}
-                onClick={() => setOpen(false)}>
-                <span style={{ fontSize:20 }}>{app.emoji}</span>
-                <div>
-                  <div style={{ fontSize:13, fontWeight:700, color: app.name===CURRENT_APP ? C.primary : C.text }}>{app.name}</div>
-                  {app.name === CURRENT_APP && <div style={{ fontSize:10, color:C.primary, fontWeight:600 }}>● Aktiv</div>}
-                </div>
-              </a>
-            ))}
-          </div>
-        </>
-      )}
-    </div>
-  );
-}
 export default function SpiceApp() {
   const [user, setUser] = useState(null);
   const [loadingUser, setLoadingUser] = useState(true);
